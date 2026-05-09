@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  table     Int
+  customer  String
+  items     String
+  status    Status   @default(PENDING)
+  createdAt DateTime @default(now())
+}
+
+enum Status {
+  PENDING
+  READY
+  DELIVERED
+}
